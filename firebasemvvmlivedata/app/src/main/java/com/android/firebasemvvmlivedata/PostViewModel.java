@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 public class PostViewModel extends ViewModel {
 
@@ -31,6 +30,7 @@ public class PostViewModel extends ViewModel {
 
 
     }
+
 
 
 

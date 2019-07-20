@@ -1,5 +1,7 @@
 package com.android.firebasemvvmlivedata;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
@@ -14,9 +16,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.android.firebasemvvmlivedata.PostApp.APP_CONTEXT;
+
 public class PostRepository {
 
-    private FirebaseFirestore db;
+
+    private  Context APP_COTEXT = APP_CONTEXT;
     private CollectionReference posts;
     private static PostRepository instance;
     private ArrayList<PostModel> dataFromFirebase = new ArrayList<>();
@@ -40,8 +45,8 @@ public class PostRepository {
     }
 
     public void setDataFromFirebase() {
-
-        db = FirebaseFirestore.getInstance();
+        FirebaseApp.initializeApp(APP_CONTEXT);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         posts = db.collection("POSTS");
         isLoading.setValue(true);
         failedToLoad.setValue(false);
